@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Inria+Sans:wght@400;700&display=swap');
+
+:root {
+  --main-background-color: #eee;
+  --main-foreground-color: #1d3557;
+  --importance-color: #d90429;
+  --button-bg-color: var(--main-background-color);
+  --button-fg-color: var(--main-foreground-color);
+}
+
+body {
+  font-size: 16px;
+  background-color: var(--main-background-color);
+  color: var(--main-foreground-color);
+}
+
+* {
+  font-family: 'Inria Sans', sans-serif;
+}
+
+button.default,
+a.default {
+  border: 2px solid;
+  border-radius: 55px;
+  padding: 7px 15px;
+  margin-inline: 5px;
+  font-size: 1.1rem;
+  text-align: center;
+  background-color: transparent;
+  border-color: var(--main-foreground-color);
+}
+
+a.default:active,
+button.default:active {
+  transform: scale(0.9);
+  transition: 0.6s;
+}
+
+@media only screen and (min-width: 1100px) {
+  a.default:hover,
+  button.default:hover {
+    cursor: pointer;
+    color: #fff;
+    background-color: var(--main-foreground-color);
+
+    & .fa-solid {
+      color: #fff;
+    }
+  }
+}

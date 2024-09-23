@@ -1,0 +1,195 @@
+header {
+    user-select: none;
+    font-size: 1.9rem;
+    padding-top: 10px;
+
+    display: flex;
+    justify-content: space-around;
+
+    & span {
+        color: var(--importance-color);
+    }
+}
+
+
+#products {
+    margin-top: 100px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+
+    & h1 {
+        width: auto;
+        margin: auto;
+        font-size: 2rem;
+    }
+
+    & .product {
+        width: 90%;
+        margin: auto;
+        margin-bottom: 50px;
+        padding-block: 15px;
+
+        background-color: white;
+
+        border-radius: 20px;
+        box-shadow: 2px 2px 10px #00000080;
+
+        & img {
+            display: block;
+            width: 290px;
+            margin: auto;
+            margin-block: 20px;
+            border-radius: 20px;
+            box-shadow: 2px 2px 10px #00000080;
+        }
+
+        & .product-information {
+            margin-inline: 10px;
+
+            & h1 {
+                font-size: 1.9rem;
+            }
+
+            & p {
+                font-size: 1.5rem;
+                margin-block: 5px;
+            }
+
+            & .manage-product {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                & .manage-quantity {
+                    & p.quantity {
+                        display: inline;
+                        margin-right: 10px;
+                    }
+
+                    /*hide arrows*/
+                    /* Chrome, Safari, Edge, Opera */
+                    input::-webkit-outer-spin-button,
+                    input::-webkit-inner-spin-button {
+                        -webkit-appearance: none;
+                        margin: 0;
+                    }
+
+                    /* Firefox */
+                    input[type=number] {
+                        -moz-appearance: textfield;
+                    }
+
+                    & input {
+                        width: 40px;
+                        height: 40px;
+                        font-size: 1.4rem;
+                        text-align: center;
+                    }
+                }
+
+                & button.remove {
+                    font-size: 1.7rem;
+                    margin-inline: 10px;
+                    margin-block: 0;
+                    color: var(--importance-color);
+                }
+            }
+        }
+    }
+}
+
+footer {
+    font-size: 2rem;
+    margin-block: 60px;
+    text-align: center;
+    color: var(--main-foreground-color);
+
+    & .payment-methods {
+
+        & button:active {
+            cursor: pointer;
+            transform: scale(1.1);
+            transition: all .1;
+        }
+
+        .fa-brands {
+            color: #1985a1;
+            font-size: 4rem;
+            margin: 10px;
+        }
+    }
+}
+
+@media only screen and (min-width: 700px) {
+    header {
+        font-size: 1.9rem;
+    }
+
+    #products {
+        & .product {
+            margin: auto;
+            margin-bottom: 50px;
+            padding: 15px;
+            display: flex;
+            justify-content: flex-start;
+
+            & img {
+                width: 300px;
+                margin: 0;
+            }
+
+            & .product-information {
+                width: 100%;
+                margin: 25px;
+
+                & h1 {
+                    font-size: 2rem;
+                }
+
+                & p {
+                    font-size: 1.7rem;
+                    margin-block: 5px;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 1100px) {
+    header {
+        width: 75%;
+        margin: auto;
+        font-size: 2rem;
+        padding-block: 20px;
+        justify-content: space-between;
+
+        & .total-price {
+            font-weight: 700;
+        }
+    }
+
+    #products {
+        & .product {
+            width: 75%;
+        }
+    }
+
+    footer {
+        font-size: 2.5rem;
+
+
+        & button:hover {
+            cursor: pointer;
+            transform: scale(1.1);
+            transition: all .3s;
+        }
+
+        & button:active {
+            transform: scale(-0.9);
+            transition: 0.6s;
+        }
+
+
+    }
+}

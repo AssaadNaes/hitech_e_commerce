@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../styles/reset.css">
+        <link rel="stylesheet" href="../styles/global.css">
+        <link rel="stylesheet" href="../styles/pages/cart.css">
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+            integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+            crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+        <link rel="icon" href="../images/Phoenix-squadron.svg">
+        <title>HiTech - Cart</title>
+    </head>
+
+    <body>
+        <header>
+            <div class="logo">
+                <i class="fa-brands fa-phoenix-squadron"></i>
+                HiTech
+            </div>
+
+            <div class="total-price">
+                <p>Total: <span>25.34€</span></p>
+            </div>
+        </header>
+
+        <section id="products">
+            <!-- <article class="product">
+                <img src="../images/products/gpu.jpeg" alt>
+                <div class="product-information">
+                    <h1>GPU</h1>
+                    <p>price 10€</p>
+                    <div class="manage-product">
+                        <div class="manage-quantity">
+                            <p class="quantity">quantity:</p>
+                            <input
+                                oninput="if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                                min="0"
+                                type="number"
+                                maxlength="2" />
+                        </div>
+                        <button class="remove default"><i
+                                class="fa-solid fa-trash-can"></i></button>
+                    </div>
+                </div>
+            </article> -->
+        </section>
+
+        <footer class="checkout">
+            <p>checkout with</p>
+            <div class="payment-methods">
+                <button><i class="fa-brands fa-cc-paypal"></i></button>
+                <button><i class="fa-brands fa-cc-mastercard"></i></button>
+                <button><i class="fa-brands fa-google-pay"></i></i></button>
+            </div>
+        </footer>
+
+        <script src="../js/cart.js"></script>
+    </body>
+</html>
