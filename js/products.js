@@ -2,7 +2,7 @@ const products = [
     {
         id: 1,
         imgSrc: "../images/products/gpu.jpeg",
-        name: "GPU",
+        name: "NVIDIA GeForce RTX 4080 SUPER - 16GB",
         description: "Ultra x pro max 200 GB GPU",
         price: 1500,
         quantity: "10"
@@ -19,7 +19,7 @@ const products = [
     {
         id: 3,
         imgSrc: "../images/products/moi-motherboard.jpg",
-        name: "MOI Motherboard",
+        name: "MSI Motherboard",
         description: "Ultra x pro max 200 GB GPU",
         price: 2000,
         quantity: "10"
