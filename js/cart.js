@@ -4,30 +4,45 @@ const products = [
         name: "NONIDEA GeForce RTX 4080 SUPER - 16GB",
         imgSrc: "../images/products/gpu.jpeg",
         price: 1500,
-        quantityInCart: "1"
+        quantityInCart: 1
     },
     {
         id: 1,
         name: "Mouse + Keyboard + Mic + Headset",
         imgSrc: "../images/products/mouse-keyboard-mic-headset.jpeg",
         price: 1250,
-        quantityInCart: "1"
+        quantityInCart: 1
     }
 ];
 
 function validateInput(inputElement, maxLength) {
     inputElement.value = inputElement.value
-    .replace("-", "")
-    .slice(0, maxLength)
+        .replace("-", "")
+        .slice(0, maxLength);
 }
 
-function createHeaderHTML(/*Total price*/) {
+function calculateTotalPrice() {
+    return products.reduce((total, product) => total + product.price * product.quantityInCart, 0).toFixed(2);
+}
+
+function setQuantity(inputElement) {
+    const product = products.find(product => product.id === parseInt(inputElement.id));
+    
+    if (product) {
+        product.quantityInCart = inputElement.value;
+    }
+    
+    // regenerates the header in order for the total price to update
+    generateHeader(calculateTotalPrice());
+}
+
+function createHeaderHTML(totalPrice) {
     return `<div class="logo">
                 <i class="fa-brands fa-phoenix-squadron"></i>
                 HiTech
             </div>
             <div class="total-price">
-                <p>Total: <span>25€</span></p>
+                <p>Total: <span>${totalPrice}€</span></p>
             </div>`;
 }
 
@@ -42,8 +57,9 @@ function createProductHTML({ id, name, imgSrc, price, quantityInCart }) {
                             <p class="quantity">quantity:</p>
                             <input
                                 id="${id}"
-                                value="${quantityInCart}"
+                                value="1"
                                 oninput="validateInput(this, this.maxLength)"
+                                onchange="setQuantity(this)"
                                 min="0"
                                 type="number"
                                 maxlength="2" />
@@ -63,16 +79,27 @@ function createFooterHTML() {
             </div>`;
 }
 
-function generateCart(products){
+
+function generateHeader(totalPrice){
     const header = document.querySelector("header");
+
+    if(!header) {
+        console.error("Header element not found!");
+        return;
+    }
+
+    header.innerHTML = createHeaderHTML(totalPrice);
+}
+
+function generateCart(products) {
     const footer = document.querySelector("footer");
     const container = document.getElementById("products");
 
-    if (!header || !container || !footer){
+    if (!container || !footer) {
         console.error("One or more requiered elements not found");
     }
 
-    header.innerHTML = createHeaderHTML(/*Total price*/);
+    generateHeader(calculateTotalPrice());
 
     container.innerHTML = "";
     if (products.length > 0) {
