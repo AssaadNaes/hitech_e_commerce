@@ -1,18 +1,33 @@
-function generateHeader() {
-    const body = document.getElementsByTagName("body")[0];
-    const header = document.createElement("header");
-    const htmlCode = `
+let isLoggedIn = false;
+
+function logout() {
+    isLoggedIn = !isLoggedIn;
+    updateHeader();
+}
+
+function createHeaderHTML(isLoggedIn) {
+    const commonHTML = `
         <div class="logo">
             <i class="fa-brands fa-phoenix-squadron"></i>
             HiTech
         </div>
-
         <div class="navigation">
             <a href="pages/cart.html" class="default cart navigation-buttons">
                 <i class="fa-solid fa-cart-shopping"></i>
                 €0,00
                 <span class="products-count">0</span>
             </a>
+    `;
+
+    const loggedInHTML = `
+            <button class="default navigation-buttons" onclick="logout()">
+                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                Logout
+            </button>
+        </div>
+    `;
+
+    const loggedOutHTML = `
             <a href="pages/login.html" class="default log-in navigation-buttons">
                 <i class="fa-solid fa-arrow-right-to-bracket"></i>
                 Login
@@ -24,26 +39,18 @@ function generateHeader() {
         </div>
     `;
 
-    header.innerHTML = htmlCode;
-
-    try {
-        // Select the first element with the class 'welcome-view'
-        const container = document.getElementsByClassName("welcome-view")[0];
-
-        // Check if the container exists
-        if (container) {
-            // Prepend the header to the container
-            container.prepend(header);
-        } else {
-            // If the container is not found, prepend the header to the body
-            body.prepend(header);
-        }
-    } catch (err) {
-        console.log(err);
-
-        // In case of an error, prepend the header to the body as a fallback
-        body.prepend(header);
-    }
+    return commonHTML + (isLoggedIn ? loggedInHTML : loggedOutHTML);
 }
 
-generateHeader();
+function updateHeader() {
+    const header = document.querySelector("header");
+    if (!header) {
+        console.error("Header element not found");
+        return;
+    }
+
+    header.innerHTML = createHeaderHTML(isLoggedIn);
+}
+
+// Initial header generation
+updateHeader();
