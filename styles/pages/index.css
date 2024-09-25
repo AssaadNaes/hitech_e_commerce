@@ -86,8 +86,13 @@
             }
 
             & p {
-                font-size: 1.2rem;
+                font-size: 1.4rem;
                 margin-block: 5px;
+            }
+
+            & p.price {
+                font-weight: 700;
+                color: #219ebc;
             }
         }
 

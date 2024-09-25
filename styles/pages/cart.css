@@ -54,7 +54,7 @@ header {
             & p {
                 font-size: 1.5rem;
                 margin-block: 5px;
-                color: var(--importance-color);
+                color: #219ebc;
             }
 
             & .manage-product {

@@ -1,47 +1,21 @@
 const products = [
     {
-        id: 1,
+        id: 0,
         imgSrc: "../images/products/gpu.jpeg",
         name: "NONIDEA GeForce RTX 4080 SUPER - 16GB",
         price: 1500,
+        totalPrice: 1500,
         inCartQuantity: "1"
     },
     {
-        id: 2,
+        id: 1,
         imgSrc: "../images/products/mouse-keyboard-mic-headset.jpeg",
         name: "Mouse + Keyboard + Mic + Headset",
         price: 1250,
-        inCartQuantity: "5"
+        totalPrice: 2500,
+        inCartQuantity: "2"
     }
 ];
-
-function getTotal() {
-    let totalPrice = 0;
-    const length = products.length;
-    for (let i = 0; i < length; i++){
-        product = products[i]
-        totalPrice += product.price * product.inCartQuantity;
-    }
-
-    return totalPrice;
-}
-
-function viewHeader() {
-    const header = document.getElementById("header");
-    const logo = document.createElement("div");
-    logo.classList.add("logo");
-    const total = document.createElement("div");
-    total.classList.add("total-price");
-
-    logo.innerHTML = `
-            <i class="fa-brands fa-phoenix-squadron"></i>
-            HiTech`
-    
-    total.innerHTML = `<p>Total: <span>${getTotal()}€</span></p>`
-
-    header.appendChild(logo);
-    header.appendChild(total);
-}
 
 function validateInput(inputElement, maxLength) {
     inputElement.value = inputElement.value
@@ -49,7 +23,19 @@ function validateInput(inputElement, maxLength) {
         .slice(0, maxLength);
 }
 
-function viewProducts() {
+function setHeader() {
+    const header = document.getElementById("header");
+    header.innerHTML = 
+    `<div class="logo">
+        <i class="fa-brands fa-phoenix-squadron"></i>
+        HiTech
+    </div>
+    <div class="total-price">
+        <p>Total: <span>to set€</span></p>
+    </div>`;
+}
+
+function setProducts() {
     const container = document.getElementById("products");
     if (products.length > 0) {
         products.forEach(product => {
@@ -60,12 +46,12 @@ function viewProducts() {
                 <img src="${product.imgSrc}" alt>
                 <div class="product-information">
                     <h1>${product.name}</h1>
-                    <p>${(product.price - (product.price / 100 * 10)) * product.inCartQuantity}€</p>
+                    <p>${product.totalPrice}€</p>
                     <div class="manage-product">
                         <div class="manage-quantity">
                             <p class="quantity">quantity:</p>
                             <input
-                                name="quantity"
+                                id="${product.id}"
                                 value="${product.inCartQuantity}"
                                 oninput="validateInput(this, this.maxLength)"
                                 min="0"
@@ -86,7 +72,7 @@ function viewProducts() {
     }
 }
 
-function viewFooter() {
+function setFooter() {
     if (products.length > 0) {
         const footer = document.getElementById("checkout");
         footer.innerHTML = `
@@ -99,6 +85,6 @@ function viewFooter() {
     }
 }
 
-viewHeader();
-viewProducts();
-viewFooter();
+setHeader();
+setProducts();
+setFooter();

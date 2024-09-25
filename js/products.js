@@ -39,7 +39,7 @@ function generateProducts() {
               <div class="product-description">
                   <h1>${product.name}</h1>
                   <p>${product.description}</p>
-                  <p class="price"><s>${product.price}</s> <span style="color:red;">${(product.price - (product.price / 100 * 10))}€</span></p>
+                  <p class="price">${product.price}€</p>
               </div>
           </div>
           <div class="button-container">
