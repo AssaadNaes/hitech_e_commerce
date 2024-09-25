@@ -51,7 +51,7 @@ function createProductHTML({ id, name, imgSrc, price, quantityInCart }) {
                 <img src="${imgSrc}" alt>
                 <div class="product-information">
                     <h1>${name}</h1>
-                    <p>${price * quantityInCart}€</p>
+                    <p class="price">${price * quantityInCart}€</p>
                     <div class="manage-product">
                         <div class="manage-quantity">
                             <p class="quantity">quantity:</p>
