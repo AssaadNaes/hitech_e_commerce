@@ -25,15 +25,30 @@ function calculateTotalPrice() {
     return products.reduce((total, product) => total + product.price * product.quantityInCart, 0).toFixed(2);
 }
 
-function setQuantity(inputElement) {
-    const product = products.find(product => product.id === parseInt(inputElement.id));
+function setQuantity(id, value) {
+    if (value === "0" || value === "") {
+        value = 1;
+    }
+
+    const product = products.find(product => product.id === Number(id));
     
     if (product) {
-        product.quantityInCart = inputElement.value;
+        product.quantityInCart = parseInt(value);
     }
-    
+
     // regenerates the header in order for the total price to update
     generateHeader(calculateTotalPrice());
+}
+
+function removeItem(id) {
+    const index = products.findIndex(product => product.id === Number(id));
+
+    if (index !== -1) {
+        products.splice(index, 1);
+        generateCart();
+    } else {
+        console.error(`Product with id ${id} not found.`);
+    }
 }
 
 function createHeaderHTML(totalPrice) {
@@ -59,12 +74,12 @@ function createProductHTML({ id, name, imgSrc, price, quantityInCart }) {
                                 id="${id}"
                                 value="1"
                                 oninput="validateInput(this, this.maxLength)"
-                                onchange="setQuantity(this)"
+                                onchange="setQuantity(this.id, this.value)"
                                 min="0"
                                 type="number"
                                 maxlength="2" />
                         </div>
-                        <button class="remove default"><i class="fa-solid fa-trash-can"></i></button>
+                        <button id="${id}" class="remove default" onclick="removeItem(this.id)"><i class="fa-solid fa-trash-can"></i></button>
                     </div>
                 </div>
             </article>`;
@@ -79,11 +94,10 @@ function createFooterHTML() {
             </div>`;
 }
 
-
-function generateHeader(totalPrice){
+function generateHeader(totalPrice) {
     const header = document.querySelector("header");
 
-    if(!header) {
+    if (!header) {
         console.error("Header element not found!");
         return;
     }
@@ -91,9 +105,9 @@ function generateHeader(totalPrice){
     header.innerHTML = createHeaderHTML(totalPrice);
 }
 
-function generateCart(products) {
-    const footer = document.querySelector("footer");
+function generateCart() {
     const container = document.getElementById("products");
+    const footer = document.querySelector("footer");
 
     if (!container || !footer) {
         console.error("One or more requiered elements not found");
@@ -107,12 +121,12 @@ function generateCart(products) {
             const articleHTML = createProductHTML(product);
             container.insertAdjacentHTML("beforeend", articleHTML)
         });
+
+        footer.innerHTML = createFooterHTML();
     } else {
         container.innerHTML = "<h1>Your cart is empty...</h1>";
-
+        footer.innerHTML = ""; 
     }
-
-    footer.innerHTML = createFooterHTML();
 }
 
-generateCart(products);
+document.addEventListener("DOMContentLoaded", generateCart);

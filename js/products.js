@@ -56,4 +56,4 @@ function generateProducts() {
     });
 }
 
-generateProducts();
+document.addEventListener("DOMContentLoaded", generateProducts);

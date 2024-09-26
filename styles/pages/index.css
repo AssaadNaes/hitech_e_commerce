@@ -9,7 +9,7 @@
         margin-top: 150px;
     }
 
-    & span {
+    & strong {
         color: var(--importance-color);
         font-weight: 700;
     }

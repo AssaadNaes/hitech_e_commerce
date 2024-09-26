@@ -5,6 +5,8 @@ function logout() {
     updateHeader();
 }
 
+
+
 function createHeaderHTML(isLoggedIn) {
     const commonHTML = `
         <div class="logo">
