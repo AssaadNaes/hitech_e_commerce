@@ -9,11 +9,10 @@ header {
     }
 
     & .navigation {
-        margin: auto;
         display: flex;
         justify-content: center;
         align-items: center;
-        margin-top: 15px;
+        margin: 15px auto auto;
     }
 
     & .fa-solid {
