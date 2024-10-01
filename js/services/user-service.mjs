@@ -1,36 +1,41 @@
-import axios from 'axios';
-const baseUrl = "http://localhost:8080/api"; // Ensure the URL is correct
+import axios from "axios";
 
-export function login(email, password) {
-    axios.get(baseUrl + "/user/login", {
-        data: {
-            "email": email,
-            "password": password
-        }
-    })
-    .then(response => {
+const baseUrl = "http://localhost:8080/user";
+
+export async function login(email, password) {
+    try {
+        const response = await axios({
+            method: 'post',
+            url: `${baseUrl}/login`,
+            data: {
+                email: email,
+                password: password
+            }
+        });
         return response.data;
-    })
-    .catch(error => {
-        console.error("could not login user: " + error);
-    })
+    } catch (error) {
+        throw error.response ? error.response.data : new Error('Network error');
+    }
 }
 
-export function register(username, email, password) {
-    axios.post(baseUrl + "/user/register", {
-        data: {
-            "username": username,
-            "email": email,
-            "password": password
-        },
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    })
-    .then(response => {
-        return response.status; 
-    })
-    .catch(error => {
-        console.error("coulde not register user: " + error);
-    })
+// Use example
+// login("as@gmail.com", "apassword")
+//     .then(res => console.log(res))
+//     .catch(err => console.error(err));
+
+
+export function register(username, email, password){
+    try {
+        axios({
+            method: 'post',
+            url: `${baseUrl}/register`,
+            data: {
+                username: username,
+                email: email,
+                password: password
+            }
+        });
+    } catch(error) {
+        throw error.response ? error.response.data : new Error('Network error');
+    }
 }
