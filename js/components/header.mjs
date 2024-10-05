@@ -1,9 +1,4 @@
-let isLoggedIn = false;
-
-function logout() {
-    isLoggedIn = !isLoggedIn;
-    updateHeader();
-}
+import { user } from "../login.mjs";
 
 function createHeaderHTML(isLoggedIn) {
     const commonHTML = `
@@ -42,15 +37,15 @@ function createHeaderHTML(isLoggedIn) {
     return commonHTML + (isLoggedIn ? loggedInHTML : loggedOutHTML);
 }
 
-function updateHeader() {
+export function updateHeader() {
+    console.debug("header updated!")
     const header = document.querySelector("header");
     if (!header) {
         console.error("Header element not found");
         return;
     }
 
-    header.innerHTML = createHeaderHTML(isLoggedIn);
+    header.innerHTML = createHeaderHTML(user.isLoggedIn);
 }
 
-// Initial header generation
 updateHeader();

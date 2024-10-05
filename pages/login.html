@@ -6,23 +6,28 @@
 
         <link rel="stylesheet" href="../styles/reset.css">
         <link rel="stylesheet" href="../styles/global.css">
-        <link rel="stylesheet" href="../styles/pages/login.css">
+        <link rel="stylesheet" href="../styles/pages/login-register.css">
         <link rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
             integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
-            crossorigin="anonymous" referrerpolicy="no-referrer" />
+            crossorigin="anonymous" referrerpolicy="no-referrer"/>
 
         <link rel="icon" href="/images/Phoenix-squadron.svg">
         <title>HiTech - Login</title>
     </head>
     <body>
-        <form action="submit">
+        <form id="login-form">
             <h1>Log in...</h1>
-            <input type="email" placeholder="email" required>
-            <input type="password" placeholder="password" required>
-            <button class="default">
+            <input type="email" id="email" placeholder="email" required>
+            <input type="password" id="password" placeholder="password" required>
+            <p id="failure-msg"></p>
+            <button id="login-button" class="default">
                 <i class="fa-solid fa-door-open"></i>
                 open door 
             </button>
+        </form>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.7/axios.min.js" integrity="sha512-DdX/YwF5e41Ok+AI81HI8f5/5UsoxCVT9GKYZRIzpLxb8Twz4ZwPPX+jQMwMhNQ9b5+zDEefc+dcvQoPWGNZ3g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script type="module" src="../js/login.mjs"></script>
     </body>
 </html>

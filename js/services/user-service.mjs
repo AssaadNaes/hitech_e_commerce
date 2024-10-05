@@ -1,5 +1,3 @@
-import axios from "axios";
-
 const baseUrl = "http://localhost:8080/user";
 
 export async function login(email, password) {
@@ -14,7 +12,7 @@ export async function login(email, password) {
         });
         return response.data;
     } catch (error) {
-        throw error.response ? error.response.data : new Error('Network error');
+        throw error;
     }
 }
 
@@ -24,9 +22,9 @@ export async function login(email, password) {
 //     .catch(err => console.error(err));
 
 
-export function register(username, email, password){
+export async function register(username, email, password){
     try {
-        axios({
+        const response = await axios({
             method: 'post',
             url: `${baseUrl}/register`,
             data: {
@@ -35,7 +33,8 @@ export function register(username, email, password){
                 password: password
             }
         });
+        return response;
     } catch(error) {
-        throw error.response ? error.response.data : new Error('Network error');
+        throw error;
     }
 }
