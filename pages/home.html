@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="We sell high performanced pc components">
 
-    <link rel="stylesheet" href="styles/reset.css">
-    <link rel="stylesheet" href="styles/global.css">
-    <link rel="stylesheet" href="styles/header.css">
-    <link rel="stylesheet" href="styles/pages/index.css">
+    <link rel="stylesheet" href="../styles/reset.css">
+    <link rel="stylesheet" href="../styles/global.css">
+    <link rel="stylesheet" href="../styles/header.css">
+    <link rel="stylesheet" href="../styles/pages/index.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
     integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -30,21 +29,17 @@
                     €0,00
                     <span class="products-count">0</span>
                 </a>
-                <a href="pages/login.html" class="default log-in navigation-buttons">
-                    <i class="fa-solid fa-arrow-right-to-bracket"></i>
-                    Login
-                </a>
-                <a href="pages/register.html" class="default register navigation-buttons">
-                    <i class="fa-solid fa-user-plus"></i>
-                    Register
-                </a>
+                <button class="default navigation-buttons" onclick="logout()">
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                    Logout
+                </button>
             </div>
         </header>
         
         <section class="about-us">
             <h1>Hi-Tech</h1>
             <p><strong>The</strong> home of pc components</p>
-            <p>We offer best prices <strong>worldwide</strong></p>
+            <p>We offer best prices<strong> worldwide</strong></p>
             <a class="default" href="#products">Discover our products</a>
         </section>
     
@@ -81,7 +76,7 @@
     </footer>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.7/axios.min.js" integrity="sha512-DdX/YwF5e41Ok+AI81HI8f5/5UsoxCVT9GKYZRIzpLxb8Twz4ZwPPX+jQMwMhNQ9b5+zDEefc+dcvQoPWGNZ3g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script type="module" src="./js/services/products-service.mjs"></script>
-    <script type="module" src="./js/components/products.mjs"></script>
+    <script type="module" src="../js/services/products-service.mjs"></script>
+    <script type="module" src="../js/components/products.mjs"></script>
 </body>
 </html>

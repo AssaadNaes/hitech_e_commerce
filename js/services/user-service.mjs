@@ -1,12 +1,12 @@
-const baseUrl = "http://localhost:8080/user";
+import { baseUrl } from "../variables.mjs";
 
-export async function login(email, password) {
+export async function login(username, password) {
     try {
         const response = await axios({
             method: 'post',
-            url: `${baseUrl}/login`,
+            url: `${baseUrl}/user/login`,
             data: {
-                email: email,
+                username: username,
                 password: password
             }
         });
@@ -16,17 +16,11 @@ export async function login(email, password) {
     }
 }
 
-// Use example
-// login("as@gmail.com", "apassword")
-//     .then(res => console.log(res))
-//     .catch(err => console.error(err));
-
-
-export async function register(username, email, password){
+export async function register(username, email, password) {
     try {
         const response = await axios({
             method: 'post',
-            url: `${baseUrl}/register`,
+            url: `${baseUrl}/user/register`,
             data: {
                 username: username,
                 email: email,
@@ -34,7 +28,7 @@ export async function register(username, email, password){
             }
         });
         return response;
-    } catch(error) {
+    } catch (error) {
         throw error;
     }
 }

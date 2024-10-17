@@ -1,28 +1,11 @@
-const products = [
-    {
-        id: 0,
-        name: "NONIDEA GeForce RTX 4080 SUPER - 16GB",
-        imgSrc: "../images/products/gpu.jpeg",
-        price: 1500,
-        quantityInCart: 1
-    },
-    {
-        id: 1,
-        name: "Mouse + Keyboard + Mic + Headset",
-        imgSrc: "../images/products/mouse-keyboard-mic-headset.jpeg",
-        price: 1250,
-        quantityInCart: 1
-    }
-];
+import { getItemsByCartId } from "../services/cart-service.mjs";
+
+const products = await getItemsByCartId()
 
 function validateInput(inputElement, maxLength) {
     inputElement.value = inputElement.value
         .replace("-", "")
         .slice(0, maxLength);
-}
-
-function calculateTotalPrice() {
-    return products.reduce((total, product) => total + product.price * product.quantityInCart, 0).toFixed(2);
 }
 
 function setQuantity(id, value) {
@@ -38,6 +21,10 @@ function setQuantity(id, value) {
 
     // regenerates the header in order for the total price to update
     generateHeader(calculateTotalPrice());
+}
+
+function calculateTotalPrice() {
+    return products.reduce((total, product) => total + product.price * product.quantityInCart, 0).toFixed(2);
 }
 
 function removeItem(id) {

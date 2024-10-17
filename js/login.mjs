@@ -1,13 +1,14 @@
 import { login } from './services/user-service.mjs';
 
 export let user = {
-};
+    
+}
 
 const form = document.getElementById("login-form");
 form?.addEventListener("submit", async function(event) {
     event.preventDefault();
     
-    const email = document.getElementById("email").value;
+    const username = document.getElementById("username").value;
     const password = document.getElementById("password").value;
     const loginButton = document.getElementById("login-button");
     let cursor = document.body.style.cursor;
@@ -16,12 +17,13 @@ form?.addEventListener("submit", async function(event) {
     cursor = "wait";
 
     try {
-        const res = await login(email, password);
+        const res = await login(username, password);
 
         if (res) {
-            user.isLoggedIn = res;
-            alert("do not forget to handle login")
-            
+            user.isLoggedIn = true;
+            user.userName = username;
+            localStorage.setItem('user', JSON.stringify(user))
+            window.location.href = "../pages/home.html";
         } else {
             document.getElementById("failure-msg").textContent = "wrong email or password!"
             loginButton.disabled = false;

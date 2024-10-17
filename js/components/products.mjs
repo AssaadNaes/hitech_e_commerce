@@ -27,10 +27,13 @@ function generateProducts() {
         return;
     }
 
-    products.forEach(product => {
-        const articleHTML = createProductHTML(product);
-        container.insertAdjacentHTML('beforeend', articleHTML);
-    });
+    let len = products.length;
+    if(len) {
+        products.forEach(product => {
+            const articleHTML = createProductHTML(product);
+            container.insertAdjacentHTML('beforeend', articleHTML);
+        });
+    }
 }
 
 generateProducts();
