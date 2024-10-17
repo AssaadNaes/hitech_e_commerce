@@ -29,7 +29,7 @@
                     €0,00
                     <span class="products-count">0</span>
                 </a>
-                <button class="default navigation-buttons" onclick="logout()">
+                <button id="logout-button" class="default navigation-buttons">
                     <i class="fa-solid fa-arrow-right-from-bracket"></i>
                     Logout
                 </button>
@@ -76,7 +76,8 @@
     </footer>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.7/axios.min.js" integrity="sha512-DdX/YwF5e41Ok+AI81HI8f5/5UsoxCVT9GKYZRIzpLxb8Twz4ZwPPX+jQMwMhNQ9b5+zDEefc+dcvQoPWGNZ3g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script type="module" src="../js/services/products-service.mjs"></script>
-    <script type="module" src="../js/components/products.mjs"></script>
+    <script type="module" src="../js/products/products-service.mjs"></script>
+    <script type="module" src="../js/products/products.mjs"></script>
+    <script src="../js/auth/logout.mjs"></script>
 </body>
 </html>

@@ -1,4 +1,4 @@
-import { getAllProducts } from "../services/products-service.mjs";
+import { getAllProducts } from "./products-service.mjs";
 
 const products = await getAllProducts();
 

@@ -1,9 +1,5 @@
 import { login } from './services/user-service.mjs';
 
-export let user = {
-    
-}
-
 const form = document.getElementById("login-form");
 form?.addEventListener("submit", async function(event) {
     event.preventDefault();
@@ -20,9 +16,7 @@ form?.addEventListener("submit", async function(event) {
         const res = await login(username, password);
 
         if (res) {
-            user.isLoggedIn = true;
-            user.userName = username;
-            localStorage.setItem('user', JSON.stringify(user))
+            localStorage.setItem('isLoggedIn', res)
             window.location.href = "../pages/home.html";
         } else {
             document.getElementById("failure-msg").textContent = "wrong email or password!"

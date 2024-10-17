@@ -1,4 +1,4 @@
-import { getItemsByCartId } from "../services/cart-service.mjs";
+import { getItemsByCartId } from "./cart-service.mjs";
 
 const products = await getItemsByCartId()
 
