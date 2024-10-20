@@ -10,18 +10,13 @@ export async function getItemsByCartId(cartId) {
     }
 }
 
-export async function insertItemToCart(cartId, productId, quantity) {
+export async function addItemToCart(cartId, productId, quantity) {
     try {
-        const response = await axios({
-            method: 'post',
-            url: `${baseUrl}/cart/item/append`,
-            data: {
-                cart_id: cartId,
-                product_id: productId,
-                quantity: quantity
-            }
+        await axios.post(`${baseUrl}/cart/item/append`, {
+            cart_id: cartId,
+            product_id: productId,
+            quantity: quantity
         });
-        return response
     } catch (error) {
         throw error;
     }

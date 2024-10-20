@@ -1,4 +1,4 @@
-import { register } from "./services/user-service.mjs";
+import { register } from "./user-service.mjs";
 
 const form = document.getElementById("register-form");
 form?.addEventListener("submit", async function(event) {
@@ -21,10 +21,10 @@ form?.addEventListener("submit", async function(event) {
             const res = await register(username, email, password);
             if(res.status === 201) {
                 console.log("User has been registered");
-                window.location.href = "../index.html";
+                window.location.href = "../pages/home.html";
             }
         } catch(error) {
-            msgParagraph.textContent = "a user with same email already exists!";
+            msgParagraph.textContent = "username or email already exists!";
         } finally {
             registerButton.disabled = false;
             cursor = "default"

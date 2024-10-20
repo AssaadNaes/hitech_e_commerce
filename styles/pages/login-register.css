@@ -33,6 +33,14 @@ form {
         border-radius: 7px;
     }
 
+    & a.register {
+        color: #fff;
+        cursor: pointer;
+        font-size: 1.2rem;
+        margin-left: 10px;
+        text-decoration: underline;
+    }
+
     & button.default {
         background-color: #fff;
         font-size: 1.2rem;

@@ -50,6 +50,15 @@
     }
 }
 
+@keyframes cart-load-opacity {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
 #products {
     margin-top: 100px;
     display: flex;
@@ -100,8 +109,16 @@
             margin: 10px;
             display: flex;
             justify-content: right;
+            justify-content: space-between;
+
+            & .cart-load {
+                font-size: 1.9rem;
+                color: var(--importance-color);
+                animation: 2s cart-load-opacity;
+            }
 
             & button{
+                display: block;
                 min-width: 110px;
             }
         }
@@ -176,6 +193,11 @@ footer {
                 margin: 10px;
                 display: flex;
                 justify-content: right;
+
+                & .cart-load {
+                    display: none;
+                    margin: 10px;
+                }
 
                 & button {
                     font-size: 1.4rem;

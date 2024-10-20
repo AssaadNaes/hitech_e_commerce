@@ -1,6 +1,9 @@
 import { getItemsByCartId } from "./cart-service.mjs";
 
-const products = await getItemsByCartId()
+const products = await getItemsByCartId(1)
+
+console.log(products);
+
 
 function validateInput(inputElement, maxLength) {
     inputElement.value = inputElement.value
@@ -13,32 +16,11 @@ function setQuantity(id, value) {
         value = 1;
     }
 
-    const product = products.find(product => product.id === Number(id));
-    
-    if (product) {
-        product.quantityInCart = parseInt(value);
-    }
-
-    // regenerates the header in order for the total price to update
-    generateHeader(calculateTotalPrice());
+    generateHeader();
 }
 
-function calculateTotalPrice() {
-    return products.reduce((total, product) => total + product.price * product.quantityInCart, 0).toFixed(2);
-}
 
-function removeItem(id) {
-    const index = products.findIndex(product => product.id === Number(id));
-
-    if (index !== -1) {
-        products.splice(index, 1);
-        generateCart();
-    } else {
-        console.error(`Product with id ${id} not found.`);
-    }
-}
-
-function createHeaderHTML(totalPrice) {
+function headerHTML(totalPrice) {
     return `<div class="logo">
                 <i class="fa-brands fa-phoenix-squadron"></i>
                 HiTech
@@ -48,12 +30,12 @@ function createHeaderHTML(totalPrice) {
             </div>`;
 }
 
-function createProductHTML({ id, name, imgSrc, price, quantityInCart }) {
+function productHTML({ id, name, image_url, price, quantity }) {
     return `<article class="product">
-                <img src="${imgSrc}" alt>
+                <img src="${image_url}" alt>
                 <div class="product-information">
                     <h1>${name}</h1>
-                    <p class="price">${price * quantityInCart}€</p>
+                    <p class="price">${price * quantity}€</p>
                     <div class="manage-product">
                         <div class="manage-quantity">
                             <p class="quantity">quantity:</p>
@@ -72,7 +54,7 @@ function createProductHTML({ id, name, imgSrc, price, quantityInCart }) {
             </article>`;
 }
 
-function createFooterHTML() {
+function footerHTML() {
     return `<p>checkout with</p>
             <div class="payment-methods">
                 <button><i class="fa-brands fa-cc-paypal"></i></button>
@@ -88,8 +70,8 @@ function generateHeader(totalPrice) {
         console.error("Header element not found!");
         return;
     }
-
-    header.innerHTML = createHeaderHTML(totalPrice);
+    
+    header.innerHTML = headerHTML(totalPrice);
 }
 
 function generateCart() {
@@ -97,23 +79,23 @@ function generateCart() {
     const footer = document.querySelector("footer");
 
     if (!container || !footer) {
-        console.error("One or more requiered elements not found");
+        console.error("One or more requiered elements not found!");
     }
 
-    generateHeader(calculateTotalPrice());
+    generateHeader(1000);
 
     container.innerHTML = "";
     if (products.length > 0) {
         products.forEach(product => {
-            const articleHTML = createProductHTML(product);
+            const articleHTML = productHTML(product);
             container.insertAdjacentHTML("beforeend", articleHTML)
         });
 
-        footer.innerHTML = createFooterHTML();
+        footer.innerHTML = footerHTML();
     } else {
         container.innerHTML = "<h1>Your cart is empty...</h1>";
         footer.innerHTML = ""; 
     }
 }
 
-document.addEventListener("DOMContentLoaded", generateCart);
+document.addEventListener("DOMContentLoaded", generateCart());
