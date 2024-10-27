@@ -10,6 +10,15 @@ export async function getItemsByCartId(cartId) {
     }
 }
 
+export async function getTotalByCartId(cartId) {
+    try {
+        const response = await axios.get(`${baseUrl}/cart/${cartId}/total`);
+        return response.data;
+    } catch (error) {
+        console.error(`Failed to get total of cart. Error: ${error}`)
+    }
+}
+
 export async function addItemToCart(cartId, productId, quantity) {
     try {
         await axios.post(`${baseUrl}/cart/item/append`, {
@@ -17,6 +26,22 @@ export async function addItemToCart(cartId, productId, quantity) {
             product_id: productId,
             quantity: quantity
         });
+    } catch (error) {
+        throw error;
+    }
+}
+
+export async function removeItemById(cartItemId) {
+    try {
+        await axios.delete(`${baseUrl}/cart/item/remove/${parseInt(cartItemId)}`);
+    } catch (error) {
+        throw error; 
+    }
+}
+
+export async function updateQuantity(cartItemId, quantity) {
+    try {
+        await axios.put(`${baseUrl}/cart/item/quantity/update/${cartItemId}/${quantity}`);
     } catch (error) {
         throw error;
     }

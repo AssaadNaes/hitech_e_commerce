@@ -47,6 +47,7 @@ async function addToCartHandler(event) {
                 closeModalButton.addEventListener("click", () => {
                     modal.close();
                 })
+                return;
             } else {
                 console.error(`Failed to add product to cart: ${error.message}`);
             }

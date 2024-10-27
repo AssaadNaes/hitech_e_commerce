@@ -13,6 +13,20 @@ header {
     }
 }
 
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+}
+
+.fade-out {
+    animation: fadeOut 0.3s forwards; /* Adjust duration as needed */
+}
 
 #products {
     margin-top: 100px;
@@ -95,7 +109,7 @@ header {
                     }
                 }
 
-                & button.remove {
+                & .remove-button {
                     font-size: 1.7rem;
                     margin-inline: 10px;
                     margin-block: 0;
@@ -106,7 +120,7 @@ header {
     }
 }
 
-footer {
+#payment{
     font-size: 2rem;
     margin-block: 60px;
     text-align: center;
@@ -183,12 +197,12 @@ footer {
             width: 75%;
         }
 
-        & button.remove:hover {
+        & .remove-button:hover {
             background-color: var(--importance-color);
         }
     }
 
-    footer {
+    #payment {
         font-size: 2.5rem;
         margin: 0;
 
