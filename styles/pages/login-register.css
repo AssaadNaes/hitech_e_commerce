@@ -33,12 +33,13 @@ form {
         border-radius: 7px;
     }
 
-    & a.register {
+    & a {
         color: #fff;
         cursor: pointer;
         font-size: 1.2rem;
         margin-left: 10px;
-        text-decoration: underline;
+        display: inline;
+        text-decoration: underline; 
     }
 
     & button.default {
