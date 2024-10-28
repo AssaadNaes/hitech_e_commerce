@@ -1,7 +1,8 @@
-import { getAllProducts } from "./products-service.mjs";
+import { getAllProducts, getByName } from "./products-service.mjs";
 import { addItemToCart } from "../cart/cart-service.mjs"
 
-const products = await getAllProducts();
+let products = await getAllProducts();
+const searchInput = document.getElementById("search-input")
 
 function getProductHTML({ product_id, image_url, name, description, price }) {
     return `
@@ -24,8 +25,19 @@ function getProductHTML({ product_id, image_url, name, description, price }) {
     `;
 }
 
+searchInput.addEventListener("keydown", async (event) => {
+    if (event.key === "Enter") {
+        if (searchInput.value.trim() === ""){
+            generateProducts(products);
+        } else {
+            const productsByName = await getByName(searchInput.value);
+            generateProducts(productsByName);
+        }
+    }
+})
+
 async function addToCartHandler(event) {
-    const productID = event.target.getAttribute('product-id');
+    const productID = event.target.getAttribute("product-id");
 
     if (localStorage.getItem("isLoggedIn") === "true") {
         try {
@@ -57,8 +69,9 @@ async function addToCartHandler(event) {
     }
 }
 
-function generateProducts() {
+function generateProducts(products) {
     const container = document.getElementById("products");
+    container.innerHTML = "";
     if (!container) {
         console.error("Container element not found");
         return;
@@ -76,4 +89,4 @@ function generateProducts() {
     }
 }
 
-generateProducts();
+generateProducts(products);
