@@ -1,7 +1,7 @@
 import { register } from "./user-service.mjs";
 
 const form = document.getElementById("register-form");
-form?.addEventListener("submit", async function(event) {
+form?.addEventListener("submit", async event => {
     event.preventDefault();
 
     const username = document.getElementById("username").value;

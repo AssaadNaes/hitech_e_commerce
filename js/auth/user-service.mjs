@@ -18,14 +18,10 @@ export async function login(username, password) {
 
 export async function register(username, email, password) {
     try {
-        const response = await axios({
-            method: 'post',
-            url: `${baseUrl}/user/register`,
-            data: {
-                username: username,
-                email: email,
-                password: password
-            }
+        const response = await axios.post(`${baseUrl}/user/register`,{
+            username: username,
+            email: email,
+            password: password
         });
         return response;
     } catch (error) {

@@ -1,52 +1,78 @@
 body {
     display: flex;
+    background: linear-gradient(116deg, #1d3557, #ffffff);
 }
 
 .container {
     width: 90%;
     margin: auto;
+    padding: 30px;
+    border-radius: 15px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: #1d3557;
+    box-shadow: 2px 2px 10px #00000080;
 
     & .user-info {
-        /*hide arrows*/
-        /* Chrome, Safari, Edge, Opera */
-        input::-webkit-outer-spin-button,
-        input::-webkit-inner-spin-button {
-            -webkit-appearance: none;
-            margin: 0;
+        width: 100%;
+        display: flex;
+        align-items: center;
+
+        & .user-img {
+            height: 70px;
+            width: 70px;
+            border-radius: 50%;
+            margin-right: 15px;
         }
-    
-        /* Firefox */
-        input[type=number] {
-            -moz-appearance: textfield;
+
+        & .username {
+            font-size: 1.5rem;
+            color: #fff;
         }
+    }
+
+    & .user-address {
+        margin-block: 20px;
     
         & input {
             margin-block: 7px;
             border-radius: 7px;
+            background-color: #eee;
         }
-    }
-    
-    & .management-buttons {
-        margin-block: 10px;
-        display: flex;
-        justify-content: center;
-    
-        & .delete-account {
-            border: none;
-            background-color: var(--importance-color);
-            color: white;
-        }
-    }
 
+        & .management-buttons {
+            margin-block: 10px;
+            display: flex;
+            justify-content: center;
+    
+            & .save {
+                background-color: #fff;
+            }
+        
+            & .delete-account {
+                border: none;
+                background-color: var(--importance-color);
+                color: white;
+            }
+        }
+    }
 }
 
 @media only screen and (min-width: 1100px) {
     .container {
+        width: 50%;
+
         & input {
-            font-size: 2rem;
+            font-size: 1.8rem;
+        }
+
+        & button {
+            font-size: 1.3rem;
+        }
+
+        & .save:hover {
+            background-color: #1d3557;
         }
     }
 }

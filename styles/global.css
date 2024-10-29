@@ -4,8 +4,6 @@
   --main-background-color: #eee;
   --main-foreground-color: #1d3557;
   --importance-color: #d90429;
-  --button-bg-color: var(--main-background-color);
-  --button-fg-color: var(--main-foreground-color);
 }
 
 body {

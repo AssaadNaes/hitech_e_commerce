@@ -11,16 +11,24 @@
 <body>
     <div class="container">
         <div class="user-info">
-            <input type="text" placeholder="country">
-            <input type="text" placeholder="city">
-            <input type="text" placeholder="PLZ">
-            <input type="text" placeholder="street">
-            <input type="number" placeholder="phone number">
+            <img src="../images/me.jpg" alt="user" class="user-img">
+            <p class="username">username</p>
         </div>
-        <div class="management-buttons">
-            <button class="default">save chnages</button>
-            <button class="default delete-account">delete account</button>
-        </div>
+        <form class="user-address">
+            <input id="country-input" type="text" placeholder="country" required>
+            <input id="city-input" type="text" placeholder="city" required>
+            <input id="plz-input" type="text" placeholder="PLZ" required>
+            <input id="street-input" type="text" placeholder="street" required>
+            <input id="phone-input" type="number" placeholder="phone number" required>
+            <div class="management-buttons">
+                <button type="submit" class="default save">save chnages</button>
+                <button class="default delete-account">delete account</button>
+            </div>
+        </form>
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.7/axios.min.js" integrity="sha512-DdX/YwF5e41Ok+AI81HI8f5/5UsoxCVT9GKYZRIzpLxb8Twz4ZwPPX+jQMwMhNQ9b5+zDEefc+dcvQoPWGNZ3g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script type="module" src="../js/profile/profile-service.mjs"></script>
+    <script type="module" src="../js/profile/profile.mjs"></script>
 </body>
 </html>
