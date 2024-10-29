@@ -2,7 +2,7 @@ import {baseUrl} from "../variables.mjs";
 
 export async function getAddressById(userId) {
     try {
-        const respone = await axios.get(`${baseUrl}/userinfo/${userId}`);
+        const respone = await axios.get(`${baseUrl}/address/get/${userId}`);
         return respone.data;
     } catch (error) {
         console.error(`Failed to get address from the server. Error: ${error}`);
@@ -12,7 +12,7 @@ export async function getAddressById(userId) {
 
 export async function setAddress(userId, country, city, plz, street, phoneNumber) {
     try {
-        await axios.post(`${baseUrl}/userinfo/set`, {
+        await axios.post(`${baseUrl}/address/set`, {
             user_id: userId,
             country: country,
             city: city,

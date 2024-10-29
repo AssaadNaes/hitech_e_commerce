@@ -1,5 +1,7 @@
 body {
     display: flex;
+    flex-direction: column;
+    justify-content: center;
     background: linear-gradient(116deg, #1d3557, #ffffff);
 }
 
@@ -32,7 +34,7 @@ body {
         }
     }
 
-    & .user-address {
+    & #user-address {
         margin-block: 20px;
     
         & input {
@@ -71,8 +73,8 @@ body {
             font-size: 1.3rem;
         }
 
-        & .save:hover {
-            background-color: #1d3557;
+        & .save:hover{
+            color: green;
         }
     }
 }

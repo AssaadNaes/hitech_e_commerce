@@ -28,3 +28,15 @@ export async function register(username, email, password) {
         throw error;
     }
 }
+
+export async function deleteAccount(userName, password) {
+    try {
+        const response = await axios.post(`${baseUrl}/user/delete`, {
+            username: userName,
+            password: password
+        });
+        return response;
+    } catch (error) {
+        throw error;
+    }
+}

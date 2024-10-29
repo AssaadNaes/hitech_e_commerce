@@ -89,8 +89,10 @@ header {
                     }
                     
                     & input {
-                        width: 40px;
-                        height: 40px;
+                        border: 1px solid black;
+                        border-radius: 5px;
+                        width: 50px;
+                        height: 50px;
                         font-size: 1.4rem;
                         text-align: center;
                     }
