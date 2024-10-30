@@ -7,14 +7,17 @@
     <link rel="stylesheet" href="../styles/global.css">
     <link rel="stylesheet" href="../styles/dialog.css">
     <link rel="stylesheet" href="../styles/pages/profile.css">
+    <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+            integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+            crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Document</title>
 </head>
 <body>
     <div class="container">
-        <div class="user-info">
-            <img src="../images/me.jpg" alt="user" class="user-img">
-            <p class="username">username</p>
-        </div>
+        <i style="color: #d9a004; font-size: 1.9rem;" class="fa-solid fa-crown"></i>
+        <p id="username"></p>
+        
         <form action="submit" id="user-address">
             <input id="country-input" type="text" placeholder="country" required>
             <input id="city-input" type="text" placeholder="city" required>
@@ -45,5 +48,6 @@
     <script type="module" src="../js/profile/profile-service.mjs"></script>
     <script type="module" src="../js/profile/address.mjs"></script>
     <script type="module" src="../js/profile/delete-profile.mjs"></script>
+    <script type="module" src="../js/profile/username.mjs"></script>
 </body>
 </html>

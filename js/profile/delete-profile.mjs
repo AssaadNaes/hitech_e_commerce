@@ -19,14 +19,8 @@ deleteAccountButton?.addEventListener("click", () => {
 
         form?.addEventListener("submit", async event => {
             event.preventDefault();
-
-            try {
-                console.log(username, password);
-                
-                deleteAccount(username, password);
-            } catch (error) {
-                // you were here
-            }
+            console.log(username, password);
+            deleteAccount(username, password)
         })
     })
 });

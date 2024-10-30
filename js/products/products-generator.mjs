@@ -41,7 +41,7 @@ async function addToCartHandler(event) {
 
     if (localStorage.getItem("isLoggedIn") === "true") {
         try {
-            await addItemToCart(1, productID, 1);
+            await addItemToCart(2, productID, 1);
             
             const cartLoadIcon = event.target.parentElement.querySelector(".cart-load");
             cartLoadIcon.style.display = "inline";

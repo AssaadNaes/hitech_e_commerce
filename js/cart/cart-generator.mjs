@@ -54,7 +54,7 @@ async function generateHeader() {
                 HiTech
             </div>
             <div class="total-price">
-                <p>Total: <span>${await getTotal(1)}€</span></p>
+                <p>Total: <span>${await getTotal(2)}€</span></p>
             </div>`;
 
     if (header) {
@@ -98,7 +98,7 @@ async function generateProducts() {
 
     productsContainer.innerHTML = "";
     paymentContainer.innerHTML = "";
-    const products = await getItemsByCartId(1);
+    const products = await getItemsByCartId(2);
     if (products.length > 0) {
         products.forEach(product => {
             const html = getProductHtml(product);

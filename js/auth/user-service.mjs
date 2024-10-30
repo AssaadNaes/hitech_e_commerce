@@ -31,12 +31,13 @@ export async function register(username, email, password) {
 
 export async function deleteAccount(userName, password) {
     try {
-        const response = await axios.post(`${baseUrl}/user/delete`, {
+        await axios.post(`${baseUrl}/user/delete`, {
             username: userName,
             password: password
         });
-        return response;
+        
+        window.location.href = "../index.html";
     } catch (error) {
-        throw error;
+        document.getElementById("failure-msg").textContent = "Wrong username or password!";
     }
 }

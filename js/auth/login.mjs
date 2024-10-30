@@ -16,6 +16,7 @@ form?.addEventListener("submit", async function(event) {
         const res = await login(username, password);
         if (res === true) {
             localStorage.setItem('isLoggedIn', res);
+            localStorage.setItem('username', username);
             window.location.href = "../pages/home.html";
         } else {
             document.getElementById("failure-msg").textContent = "wrong username or password!";
